@@ -1,0 +1,22 @@
+{
+  "A": {
+    "relativeError": 1.0,
+    "value": 10.0
+  },
+  "B": {
+    "relativeError": 0.1,
+    "value": 3.0
+  },
+  "C": {
+    "relativeError": 0.3,
+    "value": 1.0
+  },
+  "D": {
+    "relativeError": 1.5,
+    "value": 15.0
+  },
+  "E": {
+    "relativeError": 0.4,
+    "value": 7.0
+  }
+}

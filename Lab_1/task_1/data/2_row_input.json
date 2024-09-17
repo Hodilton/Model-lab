@@ -1,0 +1,222 @@
+{
+  "(A - B) / C + (A + B) * (C - D) * E": {
+    "A": {
+      "relativeError": 0.5,
+      "value": 5.0
+    },
+    "B": {
+      "relativeError": 0.2,
+      "value": 1.0
+    },
+    "C": {
+      "relativeError": 0.7,
+      "value": 10.0
+    },
+    "D": {
+      "relativeError": 0.4,
+      "value": 2.0
+    },
+    "E": {
+      "relativeError": 0.1,
+      "value": 3.0
+    }
+  },
+  "(A + B + C) / (D / E) - (D - E) / A": {
+    "A": {
+      "relativeError": 0.5,
+      "value": 5.0
+    },
+    "B": {
+      "relativeError": 0.2,
+      "value": 1.0
+    },
+    "C": {
+      "relativeError": 0.7,
+      "value": 10.0
+    },
+    "D": {
+      "relativeError": 0.4,
+      "value": 2.0
+    },
+    "E": {
+      "relativeError": 0.1,
+      "value": 3.0
+    }
+  },
+  "((A - B) * (B + C)) / ((C - D) * (D + E))": {
+    "A": {
+      "relativeError": 0.5,
+      "value": 5.0
+    },
+    "B": {
+      "relativeError": 0.2,
+      "value": 1.0
+    },
+    "C": {
+      "relativeError": 0.7,
+      "value": 10.0
+    },
+    "D": {
+      "relativeError": 0.4,
+      "value": 2.0
+    },
+    "E": {
+      "relativeError": 0.1,
+      "value": 3.0
+    }
+  },
+  "(A * B - C * D) / ((A + B) * (C - D))": {
+    "A": {
+      "relativeError": 0.5,
+      "value": 5.0
+    },
+    "B": {
+      "relativeError": 0.2,
+      "value": 1.0
+    },
+    "C": {
+      "relativeError": 0.7,
+      "value": 10.0
+    },
+    "D": {
+      "relativeError": 0.4,
+      "value": 2.0
+    },
+    "E": {
+      "relativeError": 0.1,
+      "value": 3.0
+    }
+  },
+  "A * B + C / D - D * E + D / E": {
+    "A": {
+      "relativeError": 0.5,
+      "value": 5.0
+    },
+    "B": {
+      "relativeError": 0.2,
+      "value": 1.0
+    },
+    "C": {
+      "relativeError": 0.7,
+      "value": 10.0
+    },
+    "D": {
+      "relativeError": 0.4,
+      "value": 2.0
+    },
+    "E": {
+      "relativeError": 0.1,
+      "value": 3.0
+    }
+  },
+  "((A + B) / C - C / (D - E)) * (A / C)": {
+    "A": {
+      "relativeError": 0.5,
+      "value": 5.0
+    },
+    "B": {
+      "relativeError": 0.2,
+      "value": 1.0
+    },
+    "C": {
+      "relativeError": 0.7,
+      "value": 10.0
+    },
+    "D": {
+      "relativeError": 0.4,
+      "value": 2.0
+    },
+    "E": {
+      "relativeError": 0.1,
+      "value": 3.0
+    }
+  },
+  "(A * B) / C + (A * D) / E + B - D": {
+    "A": {
+      "relativeError": 0.5,
+      "value": 5.0
+    },
+    "B": {
+      "relativeError": 0.2,
+      "value": 1.0
+    },
+    "C": {
+      "relativeError": 0.7,
+      "value": 10.0
+    },
+    "D": {
+      "relativeError": 0.4,
+      "value": 2.0
+    },
+    "E": {
+      "relativeError": 0.1,
+      "value": 3.0
+    }
+  },
+  "(A * B * C - A * B - A) / (D + E)": {
+    "A": {
+      "relativeError": 0.5,
+      "value": 5.0
+    },
+    "B": {
+      "relativeError": 0.2,
+      "value": 1.0
+    },
+    "C": {
+      "relativeError": 0.7,
+      "value": 10.0
+    },
+    "D": {
+      "relativeError": 0.4,
+      "value": 2.0
+    },
+    "E": {
+      "relativeError": 0.1,
+      "value": 3.0
+    }
+  },
+  "(A + B) / (C * D) + (C - D) / (A * B)": {
+    "A": {
+      "relativeError": 0.5,
+      "value": 5.0
+    },
+    "B": {
+      "relativeError": 0.2,
+      "value": 1.0
+    },
+    "C": {
+      "relativeError": 0.7,
+      "value": 10.0
+    },
+    "D": {
+      "relativeError": 0.4,
+      "value": 2.0
+    },
+    "E": {
+      "relativeError": 0.1,
+      "value": 3.0
+    }
+  },
+  "((A + B - C) / A) * ((D * E) / (D - E))": {
+    "A": {
+      "relativeError": 0.5,
+      "value": 5.0
+    },
+    "B": {
+      "relativeError": 0.2,
+      "value": 1.0
+    },
+    "C": {
+      "relativeError": 0.7,
+      "value": 10.0
+    },
+    "D": {
+      "relativeError": 0.4,
+      "value": 2.0
+    },
+    "E": {
+      "relativeError": 0.1,
+      "value": 3.0
+    }
+  }
+}
