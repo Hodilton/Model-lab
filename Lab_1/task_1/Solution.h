@@ -11,9 +11,9 @@ namespace task_1 {
 
     void solution() {
         std::vector<PathParams> vec_input{
-            PathParams("./task_1/data", "1_row_input", "json")/*,
+            PathParams("./task_1/data", "1_row_input", "json"),
             PathParams("./task_1/data", "2_row_input", "json"),
-            PathParams("./task_1/data", "3_row_input", "json")*/
+            PathParams("./task_1/data", "3_row_input", "json")
         };
 
         std::vector<PathParams> vec_output{
@@ -23,7 +23,7 @@ namespace task_1 {
         };
 
         using Data = std::map<std::string, std::map<std::string, Value<double>>>;
-
+        
         for (std::vector<PathParams>::const_iterator i1 = vec_input.begin(), i2 = vec_output.begin();
                                                      i1 < vec_input.end();
                                                      ++i1, ++i2)
@@ -36,7 +36,7 @@ namespace task_1 {
                 const std::string& expression = pair.first;
                 const auto& data = pair.second;
 
-                std::cout << expression << std::endl;
+                //std::cout << expression << std::endl;
 
                 Calculator calculator(expression, data);
                 const auto result = calculator.solve();

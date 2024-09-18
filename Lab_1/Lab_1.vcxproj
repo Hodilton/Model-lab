@@ -104,7 +104,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\barsuk\Documents\Programming\C++Project\Dependencies;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Barsuk\Documents\Programming\C++Project\Dependencies;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -142,6 +142,8 @@
     <ClInclude Include="task_1\ExpressionEvaluator.h" />
     <ClInclude Include="task_1\Solution.h" />
     <ClInclude Include="task_1\Value.h" />
+    <ClInclude Include="task_2\RootFindingMethods.h" />
+    <ClInclude Include="task_2\Solution.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="task_1\data\2_row_input.json" />
@@ -150,7 +152,7 @@
     <None Include="task_1\data\source\2_row.json" />
     <None Include="task_1\data\source\3_row.json" />
     <None Include="task_1\data\source\expressions.json" />
-    <None Include="task_1\data\source\test.json" />
+    <None Include="task_1\data\test.json" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

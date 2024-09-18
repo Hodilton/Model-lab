@@ -13,14 +13,16 @@ Value<T>::Value(T value, double absErr, double relErr)
 template<typename T>
 void Value<T>::calcAbsoluteError() {
     value == 0
-        ? throw std::runtime_error("Division by zero")
+        //? throw std::runtime_error("Division by zero")
+        ? 0
         : absoluteError = relativeError / std::abs(value);
 }
 
 template<typename T>
 void Value<T>::calcRelatError() {
     value == 0
-        ? throw std::runtime_error("Division by zero")
+        //? throw std::runtime_error("Division by zero")
+        ? 0
         : relativeError = absoluteError / std::abs(value);
 }
 

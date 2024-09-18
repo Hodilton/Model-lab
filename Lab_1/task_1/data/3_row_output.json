@@ -1,0 +1,52 @@
+{
+    "((A + B - C) / A) * ((D * E) / (D - E))": {
+        "absoluteError": 0.26875000000000004,
+        "relativeError": 3.2250000000000005,
+        "value": -12.0
+    },
+    "((A + B) / C - C / (D - E)) * (A / C)": {
+        "absoluteError": 116.79999999999997,
+        "relativeError": 1.6222222222222225,
+        "value": -0.013888888888888895
+    },
+    "((A - B) * (B + C)) / ((C - D) * (D + E))": {
+        "absoluteError": 4.666666666666667,
+        "relativeError": 0.875,
+        "value": 0.1875
+    },
+    "(A * B * C - A * B - A) / (D + E)": {
+        "absoluteError": 0.5174603174603175,
+        "relativeError": 0.4527777777777778,
+        "value": 0.875
+    },
+    "(A * B - C * D) / ((A + B) * (C - D))": {
+        "absoluteError": 0.1961352657004831,
+        "relativeError": 0.5638888888888889,
+        "value": 2.875
+    },
+    "(A * B) / C + (A * D) / E + B - D": {
+        "absoluteError": 0.05014985014985014,
+        "relativeError": 0.2758241758241758,
+        "value": -5.5
+    },
+    "(A + B + C) / (D / E) - (D - E) / A": {
+        "absoluteError": 0.1907589285714286,
+        "relativeError": 0.8902083333333334,
+        "value": -4.666666666666666
+    },
+    "(A + B) / (C * D) + (C - D) / (A * B)": {
+        "absoluteError": 22.371428571428574,
+        "relativeError": 43.50000000000001,
+        "value": -1.9444444444444444
+    },
+    "(A - B) / C + (A + B) * (C - D) * E": {
+        "absoluteError": 0.012575692041522493,
+        "relativeError": 1.2114583333333335,
+        "value": -96.33333333333333
+    },
+    "A * B + C / D - D * E + D / E": {
+        "absoluteError": 0.022418566722749746,
+        "relativeError": 0.9303705189941145,
+        "value": -41.5
+    }
+}
