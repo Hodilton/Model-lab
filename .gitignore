@@ -31,12 +31,16 @@
 *.out
 *.app
 
+*.filters
+*.user
+*.pdb
+
+/.vs
+
 /lab_1/.vs
 /lab_1/Debug
 /lab_1/lab_1
 
-*.filters
-*.user
-*.pdb
-/.vs
 /Prac_1/.vs
+/Prac_1/Debug
+/Prac_1/Prac_1
