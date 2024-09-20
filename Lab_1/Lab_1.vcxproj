@@ -132,12 +132,6 @@
     <ClCompile Include="task_1\Value.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="file work\factories\FileHandlerFactory.h" />
-    <ClInclude Include="file work\FileProcessor.h" />
-    <ClInclude Include="file work\handlers\IFileHandler.h" />
-    <ClInclude Include="file work\handlers\JsonHandler.h" />
-    <ClInclude Include="file work\handlers\NotImplementHandler.h" />
-    <ClInclude Include="file work\path\PathParams.h" />
     <ClInclude Include="task_1\Calculator.h" />
     <ClInclude Include="task_1\ExpressionEvaluator.h" />
     <ClInclude Include="task_1\Solution.h" />
@@ -152,7 +146,6 @@
     <None Include="task_1\data\source\2_row.json" />
     <None Include="task_1\data\source\3_row.json" />
     <None Include="task_1\data\source\expressions.json" />
-    <None Include="task_1\data\test.json" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
