@@ -1,7 +1,9 @@
 #ifndef TASK_1_SOLUTION_H
 #define TASK_1_SOLUTION_H
 
-#include "../file work/FileProcessor.h"
+#include "./file work/file_processor.h"
+using namespace file_work;
+
 #include "./Value.h"
 #include "./Calculator.h"
 
@@ -24,11 +26,12 @@ namespace task_1 {
 
         using Data = std::map<std::string, std::map<std::string, Value<double>>>;
         
-        for (std::vector<PathParams>::const_iterator i1 = vec_input.begin(), i2 = vec_output.begin();
+        for (std::vector<PathParams>::const_iterator i1 = vec_input.begin(),
+                                                     i2 = vec_output.begin();
                                                      i1 < vec_input.end();
                                                      ++i1, ++i2)
         {
-            Data readData = FileProcessor<Data>::readFile(*i1);
+            Data readData = File<Data>::read(*i1);
 
             std::map<std::string, Value<double>> results;
 
@@ -44,8 +47,8 @@ namespace task_1 {
                 results[expression] = result;
             }
 
-            FileProcessor<std::map<std::string, Value<double>>>::writeFile(*i2, results);
-        }    
+            File<std::map<std::string, Value<double>>>::write(*i2, results);
+        }
     }
 }
 

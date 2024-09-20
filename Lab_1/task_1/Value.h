@@ -1,7 +1,7 @@
 #ifndef TASK_1_VALUE_H
 #define TASK_1_VALUE_H
 
-#include <./json/json.hpp> 
+#include <./file work/include/json/json.hpp> 
 using json = nlohmann::json;
 
 template <typename T>

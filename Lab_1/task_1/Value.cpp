@@ -66,7 +66,8 @@ template<typename T>
 Value<T> Value<T>::operator/(const Value& other) {
     Value<T> temp(
         (other.value == 0
-            ? throw std::runtime_error("Division by zero")
+            //? throw std::runtime_error("Division by zero")
+            ? 0
             : this->value / other.value),
         0,
         this->relativeError + other.relativeError);
