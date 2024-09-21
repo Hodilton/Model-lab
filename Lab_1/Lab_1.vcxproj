@@ -132,10 +132,12 @@
     <ClCompile Include="task_1\Value.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="task_1\Calculator.h" />
-    <ClInclude Include="task_1\ExpressionEvaluator.h" />
+    <ClInclude Include="Calculator\Calculator.h" />
+    <ClInclude Include="Calculator\ExpressionEvaluator.h" />
+    <ClInclude Include="Calculator\Operations.h" />
     <ClInclude Include="task_1\Solution.h" />
     <ClInclude Include="task_1\Value.h" />
+    <ClInclude Include="task_1\ValueAdapter.h" />
     <ClInclude Include="task_2\RootFindingMethods.h" />
     <ClInclude Include="task_2\Solution.h" />
   </ItemGroup>
@@ -147,6 +149,7 @@
     <None Include="task_1\data\source\2_row.json" />
     <None Include="task_1\data\source\3_row.json" />
     <None Include="task_1\data\source\expressions.json" />
+    <None Include="task_2\data\function.json" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
