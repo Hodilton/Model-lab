@@ -1,11 +1,11 @@
 #ifndef TASK_1_SOLUTION_H
 #define TASK_1_SOLUTION_H
 
-#include "./file work/file_processor.h"
+#include "./file_work/file_processor.h"
 using namespace file_work;
 
 #include "./Value.h"
-#include "./Calculator.h"
+#include "./calculates_expressions/calculator.h"
 
 #include<iostream>
 
@@ -31,6 +31,7 @@ namespace task_1 {
                                                      i1 < vec_input.end();
                                                      ++i1, ++i2)
         {
+            using Data = Expression<Value<double>>;
             Data readData = File<Data>::read(*i1);
 
             std::map<std::string, Value<double>> results;
@@ -41,7 +42,7 @@ namespace task_1 {
 
                 //std::cout << expression << std::endl;
 
-                Calculator calculator(expression, data);
+                Calculator<Value<double>> calculator(expression, data);
                 const auto result = calculator.solve();
 
                 results[expression] = result;

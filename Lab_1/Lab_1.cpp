@@ -5,8 +5,8 @@
 
 int main() {
     try {
-        //task_1::solution();
-        task_2::solution();
+        task_1::solution();
+        //task_2::solution();
     }
     catch (const std::exception& e) {
         std::cout << e.what() << std::endl;
