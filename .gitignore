@@ -1,7 +1,9 @@
 *.user
 *.vs
 *.Debug
-*.x64
+*.exe
+*.pdb
+*.filters
 
 /Lab_1/lab_1
 /Prac_1/Prac_1
