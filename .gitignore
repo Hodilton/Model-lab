@@ -1,9 +1,11 @@
 *.user
 *.vs
-*.Debug
+*.debug
 *.exe
 *.pdb
 *.filters
 
-/Lab_1/lab_1
-/Prac_1/Prac_1
+/lab_1/lab_1
+
+/prac_1/prac_1
+/prac_2/prac_2
