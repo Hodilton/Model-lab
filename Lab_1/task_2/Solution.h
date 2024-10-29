@@ -1,68 +1,44 @@
-#ifndef TASK_2_SOLUTION_H
+п»ї#ifndef TASK_2_SOLUTION_H
 #define TASK_2_SOLUTION_H
 
-#include<iostream>
-#include <cmath>
-#include <string>
-#include <sstream>
+#include "./SolverFactory.hpp"
 
-#include "./RootFindingMethods.h"
+#include <./Dependencies/stdafx.h>
 
 namespace task_2 {
 
-    class FunctionSolver {
+    class F1 : public AbstractEquation {
     public:
-        explicit FunctionSolver(const std::function<double(double)>& func) : f(func) {}
+        F1(std::string f): AbstractEquation(f) {}
 
-        std::unordered_set<double> solve(const RootFindingMethod& method, double a, double b) const {
-            return method.findRoots(f, a, b);
+        double f(double x) const override {
+            return std::pow(x, 3) - 10 * x - 5;
         }
 
-    private:
-        std::function<double(double)> f;
+        double f_derivative(double x) const override {
+            return 3 * std::pow(x, 2) - 10;
+        }
+
+        std::string get_str_f() const override {
+            return str_f;
+        }
     };
 
-    std::string formatRoots(const std::unordered_set<double>& roots) {
-        if (roots.empty()) {
-            return "No find roots.";
-        }
-
-        std::ostringstream out;
-        int i = 0;
-
-        for (const auto& root : roots) {
-            i++;
-            out << " x" << i << " = " << root;
-        }
-
-        return out.str();
-    }
-
     void solution() {
-        
+        F1 equation("f(x) = x ^ 3 - 10 * x - 5");
 
-        std::function<double(double)> f1 = [](double x) { return std::pow(x, 3) - 10 * x - 5; };
-        std::function<double(double)> f2 = [](double x) { return std::pow(x, 3) - 10 * x * x - 20; };
+        auto newtonSolver = Factory::create<Type::Newton>(equation);
+        auto bisectionSolver = Factory::create<Type::Bisection>(equation);
+        auto iterationSolver = Factory::create<Type::Iteration>(equation);
 
-        NewtonMethod newton;
-        SecantMethod secant;
-        IterativeMethod iter;
+        auto nr = newtonSolver->solve(1.5);
+        auto br = bisectionSolver->solve(3.0, 4.0);
+        auto ir = iterationSolver->solve(1.5, 0.01);
 
-        FunctionSolver solver1(f1);
-        FunctionSolver solver2(f2);
-
-        // Параметры для нахождения корней
-        double for_newton = 3, a = 2, b = 3;
-
-        std::cout << "f1:\n";
-        std::cout << "Newton: " << formatRoots(solver1.solve(newton, for_newton, b)) << "\n";
-        std::cout << "Secant: " << formatRoots(solver1.solve(secant, a, b)) << "\n";
-        std::cout << "Iterative: " << formatRoots(solver1.solve(iter, for_newton, b)) << "\n\n";
-
-        std::cout << "f2:\n";
-        std::cout << "Newton: " << formatRoots(solver2.solve(newton, for_newton, b)) << "\n";
-        std::cout << "Secant: " << formatRoots(solver2.solve(secant, a, b)) << "\n";
-        std::cout << "Iterative: " << formatRoots(solver2.solve(iter, for_newton, b)) << "\n";
+        cout << "" << equation.get_str_f() << endl;
+        cout << "Newton: " << (nr ? "" + std::to_string(*nr) : "no solution found") << endl;
+        cout << "Bisection: " << (br ? "" + std::to_string(*br) : "no solution found") << endl;
+        cout << "Iteration: " << (ir ? "" + std::to_string(*ir) : "no solution found") << endl;
     }
 }
 
