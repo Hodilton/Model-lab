@@ -3,7 +3,7 @@
 #define NEWTONSOLVER_H
 
 #include "../Interfaces.h"
-#include "../IEquation.h"
+#include "./Model-lab/IEquation.h"
 
 #include <./Dependencies/stdafx.h>
 
@@ -21,7 +21,7 @@ namespace task_2 {
             double x = initialGuess;
             while (std::fabs(equation.f(x)) > epsilon) {
                 double f_val = equation.f(x);
-                double f_prime = equation.f_derivative(x);
+                double f_prime = equation.derivativeFirst(x);
                 if (std::fabs(f_prime) < epsilon) {
                     return std::nullopt;
                 }

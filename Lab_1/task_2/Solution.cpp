@@ -1,25 +1,30 @@
 ﻿#ifndef TASK_2_SOLUTION_H
 #define TASK_2_SOLUTION_H
 
-#include "./SolverFactory.hpp"
+#include "./SolverFactory.cpp"
+#include "./Model-lab/IEquation.h"
 
 #include <./Dependencies/stdafx.h>
 
 namespace task_2 {
 
-    class F1 : public AbstractEquation {
+    class F1 : public Equation {
     public:
-        F1(std::string f): AbstractEquation(f) {}
+        F1(std::string f): Equation(f) {}
 
         double f(double x) const override {
             return std::pow(x, 3) - 10 * x - 5;
         }
 
-        double f_derivative(double x) const override {
+        double derivativeFirst(double x) const override {
             return 3 * std::pow(x, 2) - 10;
         }
 
-        std::string get_str_f() const override {
+        double derivativeSecond(double x) const override {
+            return 6 * x;
+        }
+
+        std::string getStrF() const override {
             return str_f;
         }
     };
@@ -35,7 +40,7 @@ namespace task_2 {
         auto br = bisectionSolver->solve(3.0, 4.0);
         auto ir = iterationSolver->solve(1.5, 0.01);
 
-        cout << "" << equation.get_str_f() << endl;
+        cout << "" << equation.getStrF() << endl;
         cout << "Newton: " << (nr ? "" + std::to_string(*nr) : "no solution found") << endl;
         cout << "Bisection: " << (br ? "" + std::to_string(*br) : "no solution found") << endl;
         cout << "Iteration: " << (ir ? "" + std::to_string(*ir) : "no solution found") << endl;

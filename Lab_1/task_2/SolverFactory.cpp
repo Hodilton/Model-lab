@@ -1,13 +1,12 @@
 #ifndef SOLVERFACTORY_H
 #define SOLVERFACTORY_H
 
-#include "./solvers/NewtonSolver.hpp"
-#include "./solvers/BisectionSolver.hpp"
-#include "./solvers/IterationSolver.hpp"
+#include "./solvers/NewtonSolver.cpp"
+#include "./solvers/BisectionSolver.cpp"
+#include "./solvers/IterationSolver.cpp"
 
 #include "./Dependencies/except.h"
-
-#include <memory>
+#include <./Dependencies/stdafx.h>
 
 namespace task_2 {
 

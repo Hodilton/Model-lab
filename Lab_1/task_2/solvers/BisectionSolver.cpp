@@ -3,7 +3,7 @@
 #define BISECTIONSOLVER_H
 
 #include "../Interfaces.h"
-#include "../IEquation.h"
+#include "./Model-lab/IEquation.h"
 
 #include <./Dependencies/stdafx.h>
 

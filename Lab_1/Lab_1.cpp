@@ -1,7 +1,7 @@
 ﻿#include <iostream>
 
-#include "./task_1/Solution.h"
-#include "./task_2/Solution.h"
+#include "./task_1/Solution.cpp"
+#include "./task_2/Solution.cpp"
 
 int main() {
     try {

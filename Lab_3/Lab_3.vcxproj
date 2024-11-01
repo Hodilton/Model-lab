@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{27bccb4e-b26a-4960-981c-71cddb70bbb7}</ProjectGuid>
-    <RootNamespace>Lab1</RootNamespace>
+    <ProjectGuid>{5c48c19b-9429-4d01-8bb3-51a985cafcb3}</ProjectGuid>
+    <RootNamespace>Lab3</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -129,36 +129,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Lab_1.cpp" />
-    <ClCompile Include="task_1\Value.cpp" />
+    <ClCompile Include="Source.cpp" />
+    <ClCompile Include="task_1\DerivateComparison.cpp" />
+    <ClCompile Include="task_1\Differentiation.cpp" />
+    <ClCompile Include="task_1\Solution.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="task_1\Solution.cpp" />
-    <ClInclude Include="task_1\Value.h" />
-    <ClInclude Include="task_1\ValueAdapter.h" />
-    <ClInclude Include="task_2.1\IEquation.h" />
-    <ClInclude Include="task_2.1\Interfaces.h" />
-    <ClInclude Include="task_2.1\Solution.h" />
-    <ClInclude Include="task_2.1\SolverFactory.hpp" />
-    <ClInclude Include="task_2.1\solvers\BisectionSolver.hpp" />
-    <ClInclude Include="task_2.1\solvers\IterationSolver.hpp" />
-    <ClInclude Include="task_2.1\solvers\NewtonSolver.hpp" />
-    <ClInclude Include="task_2\IEquation.h" />
-    <ClInclude Include="task_2\Interfaces.h" />
-    <ClInclude Include="task_2\Solution.cpp" />
-    <ClInclude Include="task_2\SolverFactory.cpp" />
-    <ClInclude Include="task_2\solvers\BisectionSolver.cpp" />
-    <ClInclude Include="task_2\solvers\IterationSolver.cpp" />
-    <ClInclude Include="task_2\solvers\NewtonSolver.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="task_1\data\1_row_input.json" />
-    <None Include="task_1\data\2_row_input.json" />
-    <None Include="task_1\data\3_row_input.json" />
-    <None Include="task_1\data\source\1_row.json" />
-    <None Include="task_1\data\source\2_row.json" />
-    <None Include="task_1\data\source\3_row.json" />
-    <None Include="task_1\data\source\expressions.json" />
+    <ClInclude Include="task_1\IDifferentiation.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
