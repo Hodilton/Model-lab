@@ -133,9 +133,18 @@
     <ClCompile Include="task_1\DerivateComparison.cpp" />
     <ClCompile Include="task_1\Differentiation.cpp" />
     <ClCompile Include="task_1\Solution.cpp" />
+    <ClCompile Include="task_2\Solution.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="task_1\IDifferentiation.h" />
+    <ClInclude Include="task_2\IntegralCalculator.h" />
+    <ClInclude Include="task_2\IntegralFactory.h" />
+    <ClInclude Include="task_2\methods\IIntegrationMethod.h" />
+    <ClInclude Include="task_2\methods\LeftRectangleMethod.h" />
+    <ClInclude Include="task_2\methods\MiddleRectangleMethod.h" />
+    <ClInclude Include="task_2\methods\RightRectangleMethod.h" />
+    <ClInclude Include="task_2\methods\SimpsonMethod.h" />
+    <ClInclude Include="task_2\methods\TrapezoidMethod.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

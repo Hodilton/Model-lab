@@ -25,7 +25,10 @@ namespace task_1 {
             : x_vals(std::move(x)), differentiationMethod(std::move(diff)),
               function(std::move(func)), interpolationMethod(std::move(method)) {}
 
-        std::tuple<std::vector<double>, std::vector<double>, std::vector<double>> calculateFirstOrder() const {
+        std::tuple<std::vector<double>,
+            std::vector<double>,
+            std::vector<double>> calculateFirstOrder() const {
+
             // ¬ычисл€ем первую производную дл€ табличных данных
             std::vector<double> y_vals;
             for (double x : x_vals) {
@@ -48,7 +51,10 @@ namespace task_1 {
             return { *tableDerivatives, polyDerivatives, functionDerivatives };
         }
 
-        std::tuple<std::vector<double>, std::vector<double>, std::vector<double>> calculateSecondOrder() const {
+        std::tuple<std::vector<double>,
+            std::vector<double>,
+            std::vector<double>> calculateSecondOrder() const {
+
             // ¬ычисл€ем вторую производную дл€ табличных данных
             std::vector<double> y_vals;
             for (double x : x_vals) {
