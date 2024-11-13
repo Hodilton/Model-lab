@@ -7,50 +7,63 @@ namespace matrix {
 
 	class GaussSolver : public IMatrixSolver {
 	private:
-		void forwardElimination(Matrix<double>& A) {
-			/*size_t n = A.getRows();
+		void forwardElimination(Matrix<double>& matrix) {
+			size_t n = matrix.getRows();
 			for (size_t i = 0; i < n; ++i) {
-				for (size_t j = i + 1; j < n; ++j) {
 
-					double factor = A(j, i) / A(i, i);
-
-					for (size_t k = i; k < n; ++k) {
-						A(j, k) -= factor * A(i, k);
-					}
-
-					b[j] -= factor * b[i];
+				if (std::abs(matrix(i, i)) < 1e-10) {
+					throw std::runtime_error("Division by zero detected in Gaussian elimination.");
 				}
-			}*/
+
+				for (size_t j = i + 1; j < n; ++j) {
+					double factor = matrix(j, i) / matrix(i, i);
+					for (size_t k = i; k <= n; ++k) {
+						matrix(j, k) -= factor * matrix(i, k);
+					}
+				}
+			}
 		}
 
-		std::vector<double> backSubstitution(const Matrix<double>& A) {
-			/*size_t n = A.getRows();
+		std::vector<double> backSubstitution(const Matrix<double>& matrix) {
+			size_t n = matrix.getRows();
 			std::vector<double> x(n, 0);
 			for (int i = n - 1; i >= 0; --i) {
 
-				x[i] = b[i];
+				x[i] = matrix(i, n);
 
 				for (size_t j = i + 1; j < n; ++j) {
-					x[i] -= A(i, j) * x[j];
+					x[i] -= matrix(i, j) * x[j];
 				}
 
-				x[i] /= A(i, i);
+				x[i] /= matrix(i, i);
 			}
-			return x;*/
+			return x;
 		}
 
 	public:
-		std::vector<double> solve(const Matrix<double>& A,
+		std::vector<double> solve(const Matrix<double>& matrix,
 								  double tolerance) override {
-			//std::vector<double> temp_b = b;
-			//forwardElimination(A, temp_b);
-			//std::vector<double> result = backSubstitution(A, temp_b);
-			//if (!checkSolution(A, result, b, tolerance)) {
-			//	throw std::runtime_error("Solution verification failed.");
-			//}
-			//return result;
+			if (matrix.getCols() != matrix.getRows() + 1) {
+				throw std::runtime_error("Matrix does not have a free column.");
+			}
 
-			return { 1, 2, 3, 4, 5 };
+			std::vector<double> col_free = matrix.getCol(matrix.getCols());
+
+			Matrix<double> temp = matrix;
+			//std::cout << "matrix:\n" << matrix << std::endl;
+
+			forwardElimination(temp);
+			/*std::cout << "after forward:\n" << temp << std::endl;*/
+
+			auto result = backSubstitution(temp);
+			/*std::cout << "after back:\n";
+			std::copy(result.begin(), result.end(), std::ostream_iterator<double>(std::cout, " "));*/
+
+			if (!checkSolution(matrix, result, tolerance)) {
+				throw std::runtime_error("Solution verification failed.");
+			}
+
+			return result;
 		}
 	};
 }

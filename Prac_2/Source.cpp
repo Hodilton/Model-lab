@@ -30,19 +30,21 @@ int main() {
 			"Seidel",
 			"Relaxation"
 		};
-	
-		std::string key = "1";
-		Matrix<double> A = matrices.at(key);
 
 		Solution<double> solution;
 		Solutions<double> solutions;
+	
+		for (const auto& [key, matrix] : matrices) {
+			//std::string key = "1";
+			//Matrix<double> matrix = matrices.at(key);
 
-		for (size_t i = 0; i < solvers.size(); ++i) {
-			std::vector<double> vec = solvers[i]->solve(A, 0.001);
-			solution[solversNames[i]] = vec;
+			for (size_t i = 0; i < solvers.size(); ++i) {
+				std::vector<double> vec = solvers[i]->solve(matrix, 0.001);
+				solution[solversNames[i]] = vec;
+			}
+
+			solutions[key] = solution;
 		}
-
-		solutions[key] = solution;
 
 		file_work::File<Solutions<double>>::write(
 			file_work::PathParams("./data", "output", "json"),
