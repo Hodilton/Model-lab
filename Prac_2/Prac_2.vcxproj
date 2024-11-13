@@ -104,6 +104,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>C:\Users\Barsuk\Documents\Programming;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -128,6 +130,18 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Source.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="matrix_solvers\GaussSolver.h" />
+    <ClInclude Include="matrix_solvers\IMatrixSolver.h" />
+    <ClInclude Include="matrix_solvers\JacobiSolver.h" />
+    <ClInclude Include="matrix_solvers\RelaxationSolver.h" />
+    <ClInclude Include="matrix_solvers\SeidelSolver.h" />
+    <ClInclude Include="SolverFactory.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="data\input.json" />
+    <None Include="data\output.json" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
