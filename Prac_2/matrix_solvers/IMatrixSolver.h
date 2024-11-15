@@ -11,7 +11,9 @@ namespace matrix {
     public:
         virtual std::vector<double> solve(const Matrix<double>& A, double tolerance) = 0;
 
-        virtual bool checkSolution(const Matrix<double>& matrix, const std::vector<double>& x, double tolerance) const {
+        virtual bool checkSolution(const Matrix<double>& matrix,
+                                   const std::vector<double>& x,
+                                   double tolerance) const {
             Matrix<double> temp = matrix;
             temp.resize(matrix.getRows(), matrix.getCols() - 1);
 
@@ -19,7 +21,6 @@ namespace matrix {
             X.setCol(0, x);
 
             std::vector<double> calculated = (temp * X).getCol(1);
-
             std::vector<double> free_elems = matrix.getCol(matrix.getCols());
 
             size_t n = matrix.getRows();
@@ -31,11 +32,14 @@ namespace matrix {
             return true;
         }
 
-        bool hasConverged(const std::vector<double>& oldX, const std::vector<double>& newX, double tolerance) const {
+        bool hasConverged(const std::vector<double>& oldX, 
+                          const std::vector<double>& newX, 
+                          double tolerance) const {
             return calculateError(oldX, newX) < tolerance;
         }
 
-        double calculateError(const std::vector<double>& oldX, const std::vector<double>& newX) const {
+        double calculateError(const std::vector<double>& oldX, 
+                              const std::vector<double>& newX) const {
             double error = 0.0;
             for (size_t i = 0; i < oldX.size(); ++i) {
                 error += std::pow(newX[i] - oldX[i], 2);

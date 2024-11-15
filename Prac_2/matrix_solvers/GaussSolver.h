@@ -47,15 +47,13 @@ namespace matrix {
 				throw std::runtime_error("Matrix does not have a free column.");
 			}
 
-			std::vector<double> col_free = matrix.getCol(matrix.getCols());
-
 			Matrix<double> temp = matrix;
 
 			forwardElimination(temp);
 			auto result = backSubstitution(temp);
 
 			if (!checkSolution(matrix, result, tolerance)) {
-				throw std::runtime_error("Solution verification failed.");
+				throw std::runtime_error("Solution verification failed in Gauss method.");
 			}
 
 			return result;

@@ -8,7 +8,6 @@ namespace matrix {
 	class RelaxationSolver : public IMatrixSolver {
 	private:
 		double _omega;
-
 	public:
 		RelaxationSolver(double omega) : _omega(omega) {}
 
@@ -32,16 +31,13 @@ namespace matrix {
                     for (size_t j = i + 1; j < n; ++j) {
                         sum -= matrix(i, j) * x[j];
                     }
-
                     x[i] = (1 - _omega) * x[i] + (_omega * sum) / matrix(i, i);
                 }
             } while (!hasConverged(x_old, x, tolerance));
 
             if (!checkSolution(matrix, x, tolerance)) {
-                std::cout << matrix;
-                throw std::runtime_error("Solution verification failed.");
+                throw std::runtime_error("Solution verification failed in Relaxation method.");
             }
-
             return x;
 		}
 	};

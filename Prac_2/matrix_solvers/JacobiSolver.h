@@ -30,8 +30,7 @@ namespace matrix {
             } while (!hasConverged(x_old, x, tolerance));
 
             if (!checkSolution(matrix, x, tolerance)) {
-                std::cout << matrix;
-                throw std::runtime_error("Solution verification failed.");
+                throw std::runtime_error("Solution verification failed in Jacobi method.");
             }
 
             return x;

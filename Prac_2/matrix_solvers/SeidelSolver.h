@@ -33,7 +33,7 @@ namespace matrix {
             } while (!hasConverged(x_old, x, tolerance));
 
             if (!checkSolution(matrix, x, tolerance)) {
-                throw std::runtime_error("Solution verification failed.");
+                throw std::runtime_error("Solution verification failed in Seidel method.");
             }
 
             return x;
