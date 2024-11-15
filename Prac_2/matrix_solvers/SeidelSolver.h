@@ -7,42 +7,36 @@ namespace matrix {
 
 	class SeidelSolver : public IMatrixSolver {
 	public:
-		std::vector<double> solve(const Matrix<double>& A,
+		std::vector<double> solve(const Matrix<double>& matrix,
 								  double tolerance) override {
-           /* if (!A.isDiagonalDominance()) {
+            if (!matrix.isDiagonalDominance()) {
                 throw std::runtime_error("Matrix is not diagonally dominant.");
             }
 
-            size_t n = A.getRows();
-            std::vector<double> x(n, 0);
+            size_t n = matrix.getRows();
+            std::vector<double> x(n, 0), x_old(n, 0);
 
-            bool converged;
             do {
-                converged = true;
+                x_old = x;
                 for (size_t i = 0; i < n; ++i) {
-                    double sum = b[i];
+                    double sum = matrix(i, matrix.getCols() - 1);
+
                     for (size_t j = 0; j < i; ++j) {
-                        sum -= A(i, j) * x[j];
+                        sum -= matrix(i, j) * x[j];
                     }
                     for (size_t j = i + 1; j < n; ++j) {
-                        sum -= A(i, j) * x[j];
+                        sum -= matrix(i, j) * x[j];
                     }
 
-                    double x_new = sum / A(i, i);
-                    if (std::abs(x_new - x[i]) > tolerance) {
-                        converged = false;
-                    }
-                    x[i] = x_new;
+                    x[i] = sum / matrix(i, i);
                 }
-            } while (!converged);
+            } while (!hasConverged(x_old, x, tolerance));
 
-            if (!checkSolution(A, x, b, tolerance)) {
+            if (!checkSolution(matrix, x, tolerance)) {
                 throw std::runtime_error("Solution verification failed.");
             }
 
-            return x;*/
-
-            return { 2, 2, 3, 4, 5 };
+            return x;
 		}
 	};
 }

@@ -7,41 +7,34 @@ namespace matrix {
 
 	class JacobiSolver : public IMatrixSolver {
 	public:
-		std::vector<double> solve(const Matrix<double>& A,
+		std::vector<double> solve(const Matrix<double>& matrix,
 								  double tolerance) override {
-            /*if (!A.isDiagonalDominance()) {
+            if (!matrix.isDiagonalDominance()) {
                 throw std::runtime_error("Matrix is not diagonally dominant.");
             }
 
-            size_t n = A.getRows();
+            size_t n = matrix.getRows();
             std::vector<double> x(n, 0), x_old(n, 0);
 
-            bool converged;
             do {
-                converged = true;
+                x_old = x;
                 for (size_t i = 0; i < n; ++i) {
-                    double sum = b[i];
+                    double sum = matrix(i, matrix.getCols() - 1);
                     for (size_t j = 0; j < n; ++j) {
                         if (i != j) {
-                            sum -= A(i, j) * x_old[j];
+                            sum -= matrix(i, j) * x_old[j];
                         }
                     }
-                    x[i] = sum / A(i, i);
-
-                    if (std::abs(x[i] - x_old[i]) > tolerance) {
-                        converged = false;
-                    }
+                    x[i] = sum / matrix(i, i);
                 }
-                x_old = x;
-            } while (!converged);
+            } while (!hasConverged(x_old, x, tolerance));
 
-            if (!checkSolution(A, x, b, tolerance)) {
+            if (!checkSolution(matrix, x, tolerance)) {
+                std::cout << matrix;
                 throw std::runtime_error("Solution verification failed.");
             }
 
-            return x;*/
-
-            return { 4, 2, 3, 4, 5 };
+            return x;
 		}
 	};
 }

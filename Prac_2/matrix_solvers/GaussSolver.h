@@ -50,14 +50,9 @@ namespace matrix {
 			std::vector<double> col_free = matrix.getCol(matrix.getCols());
 
 			Matrix<double> temp = matrix;
-			//std::cout << "matrix:\n" << matrix << std::endl;
 
 			forwardElimination(temp);
-			/*std::cout << "after forward:\n" << temp << std::endl;*/
-
 			auto result = backSubstitution(temp);
-			/*std::cout << "after back:\n";
-			std::copy(result.begin(), result.end(), std::ostream_iterator<double>(std::cout, " "));*/
 
 			if (!checkSolution(matrix, result, tolerance)) {
 				throw std::runtime_error("Solution verification failed.");

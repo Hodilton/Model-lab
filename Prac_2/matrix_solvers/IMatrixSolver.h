@@ -20,9 +20,6 @@ namespace matrix {
 
             std::vector<double> calculated = (temp * X).getCol(1);
 
-            /*std::cout << "\n check:\n";
-            std::copy(calculated.begin(), calculated.end(), std::ostream_iterator<double>(std::cout, " "));*/
-
             std::vector<double> free_elems = matrix.getCol(matrix.getCols());
 
             size_t n = matrix.getRows();
@@ -32,6 +29,18 @@ namespace matrix {
                 }
             }
             return true;
+        }
+
+        bool hasConverged(const std::vector<double>& oldX, const std::vector<double>& newX, double tolerance) const {
+            return calculateError(oldX, newX) < tolerance;
+        }
+
+        double calculateError(const std::vector<double>& oldX, const std::vector<double>& newX) const {
+            double error = 0.0;
+            for (size_t i = 0; i < oldX.size(); ++i) {
+                error += std::pow(newX[i] - oldX[i], 2);
+            }
+            return std::sqrt(error);
         }
 
         virtual ~IMatrixSolver() = default;

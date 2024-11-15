@@ -9,20 +9,21 @@ using Solution = std::map<std::string, std::vector<T>>;
 template<typename T>
 using Solutions = std::map<std::string, Solution<T>>;
 
-int main() {
-	using namespace matrix;
+using namespace matrix;
 
+int main() {
 	try {
 		auto data = file_work::File<json>::read(
 			file_work::PathParams("./data", "input", "json"));
 
 		auto matrices = MatrixJsonDeserializer<double>::fromJsonMap(data);
 
-		std::vector<std::shared_ptr<IMatrixSolver>> solvers;
-		solvers.push_back(matrix::SolverFactory::create<matrix::Type::Gauss>());
-		solvers.push_back(matrix::SolverFactory::create<matrix::Type::Jacobi>());
-		solvers.push_back(matrix::SolverFactory::create<matrix::Type::Seidel>());
-		solvers.push_back(matrix::SolverFactory::create<matrix::Type::Relaxatin>());
+		std::vector<std::shared_ptr<IMatrixSolver>> solvers = {
+			matrix::SolverFactory::create<matrix::Type::Gauss>(),
+			matrix::SolverFactory::create<matrix::Type::Jacobi>(),
+			matrix::SolverFactory::create<matrix::Type::Seidel>(),
+			matrix::SolverFactory::create<matrix::Type::Relaxatin>()
+		};
 
 		std::vector<std::string> solversNames = {
 			"Gauss",
@@ -33,16 +34,12 @@ int main() {
 
 		Solution<double> solution;
 		Solutions<double> solutions;
-	
+
 		for (const auto& [key, matrix] : matrices) {
-			//std::string key = "1";
-			//Matrix<double> matrix = matrices.at(key);
-
 			for (size_t i = 0; i < solvers.size(); ++i) {
-				std::vector<double> vec = solvers[i]->solve(matrix, 0.001);
-				solution[solversNames[i]] = vec;
+				std::vector<double> x = solvers[i]->solve(matrix, 0.001);
+				solution[solversNames[i]] = x;
 			}
-
 			solutions[key] = solution;
 		}
 
