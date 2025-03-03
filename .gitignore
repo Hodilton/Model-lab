@@ -5,14 +5,4 @@
 *.pdb
 *.filters
 
-/sem_5/lab_1/lab_1
-/sem_5/lab_2/lab_2
-/sem_5/lab_3/lab_3
-/sem_5/Lab_4/Lab_4
-
-/sem_5/prac_1/prac_1
-/sem_5/prac_2/prac_2
-/sem_5/Prac_3/Prac_3
-/sem_5/Prac_4/Prac_4
-/sem_5/Prac_5/Prac_5
-/sem_5/Prac_6/Prac_6
+**/x64
