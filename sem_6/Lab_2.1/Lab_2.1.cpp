@@ -17,10 +17,8 @@ vector<double> solveTridiagonal(int n, const vector<double>& a,
     d_support[0] = d[0] / b[0];
 
     for (int i = 1; i < n; i++) {
-        double m = 1.0 / (b[i] - a[i] * c_support[i - 1]);
-
-        c_support[i] = c[i] * m;
-        d_support[i] = (d[i] - a[i] * d_support[i - 1]) * m;
+        c_support[i] = c[i] / (b[i] - a[i] * c_support[i - 1]);
+        d_support[i] = (d[i] - a[i] * d_support[i - 1]) / (b[i] - a[i] * c_support[i - 1]);
     }
 
     x[n - 1] = d_support[n - 1];
@@ -39,10 +37,10 @@ int main() {
     double h = (xk - x0) / N;
 
 
-    vector<double> a(N + 1, 0.0); // нижняя
-    vector<double> b(N + 1, 0.0); //диагональня
-    vector<double> c(N + 1, 0.0); //верхняя
-    vector<double> d(N + 1, 0.0); //значение
+    vector<double> a(N + 1, 0.0);
+    vector<double> b(N + 1, 0.0);
+    vector<double> c(N + 1, 0.0);
+    vector<double> d(N + 1, 0.0);
 
     b[0] = 1.5 - (1.94 / h);
     c[0] = 1.94 / h;
