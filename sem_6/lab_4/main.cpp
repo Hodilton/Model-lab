@@ -1,8 +1,12 @@
-﻿#include "./methods/LeftRectangleMethod.h"
+﻿#include "./CPlusPlus-File/src/File.h"
+
+#include "./methods/LeftRectangleMethod.h"
 #include "./methods/MiddleRectangleMethod.h"
 #include "./methods/RightRectangleMethod.h"
 #include "./methods/SimpsonMethod.h"
 #include "./methods/TrapezoidMethod.h"
+
+#include "./Function.h"
 
 #include "iostream"
 #include "iomanip"
@@ -13,49 +17,38 @@
 #include <string>
 #include <map>
 
-class Function {
-public:
-    static double fx(double x, double p) {
-        return (std::pow(x, p) + std::pow(x, -p)) / (1.0 + std::pow(x, 2));
-    }
-
-    static double I_T(double p) {
-        return std::numbers::pi / (2.0 * std::cos((p * std::numbers::pi) / 2.0));
-    }
-};
-
-using IntegrationMethod = std::function<double(double(*)(double, double), double, double, size_t, double)>;
+using IntegrationMethod = std::function<double(const Function&, size_t)>;
+using IntegrationMethods = std::map<std::string, IntegrationMethod>;
 
 void solve(const std::string& method_name,
     IntegrationMethod method,
-    double p,
-    const std::vector<size_t>& n_values,
-    double a, double b)
+    const Function& func)
 {
-    const double I_T = Function::I_T(p);
-    constexpr double eps = std::numeric_limits<double>::epsilon();
+    const double I_T = func.I_T();
 
     std::cout << "--- " << method_name << " ---\n";
-    std::cout << "Функция: f(x) = (x^(" << p << ")" << " + x^(-" << p << "))/(1 + x^2)\n";
-    std::cout << "Интервал: [" << a << ", " << b << "]\n";
-    std::cout << "Точное значение (I_T): " << std::setprecision(12) << I_T << "\n";
+    std::cout << "Функция: f(x) = " << func.getF() << "\n";
+    std::cout << "Интервал: [" 
+        << func.getRange().first 
+        << ", " 
+        << func.getRange().second << "]\n";
+    std::cout << "Точное значение (I_T): " << std::setprecision(67) << I_T << "\n";
 
-    std::cout << std::setw(8) << "n"
+    std::cout << std::right
+              << std::setw(8) << "n"
               << std::setw(45) << "I_N"
               << std::setw(40) << "E" << "\n";
     std::cout << std::string(100, '-') << "\n";
 
-    for (size_t n : n_values) {
+    for (size_t n : func.getNValues()) {
         try {
-            double I_N = method(Function::fx, a, b, n, p);
-            //double epsilon = std::abs(I_T - I_N) / I_T;
-            double epsilon = (std::abs(I_N) < eps) ?
-                std::abs(I_N) :
-                std::abs(I_T - I_N) / std::abs(I_T);    
+            double I_N = method(func, n);
+            double epsilon = std::abs(I_T - I_N) / I_T;
 
-            std::cout << std::setw(8) << n
-                      << std::setw(69) << std::setprecision(67) << I_T
-                      << std::setw(20) << std::setprecision(6) << epsilon << "\n";
+            std::cout << std::setw(8) << n << std::setw(15) << " " << std::left
+                      << std::setw(69) << std::setprecision(67) << I_N
+                      << std::setw(20) << std::setprecision(6) << epsilon 
+                      << std::right << "\n";
         }
         catch (const std::exception& e) {
             std::cout << "Ошибка при n = " << n << ": " << e.what() << "\n";
@@ -66,12 +59,14 @@ void solve(const std::string& method_name,
 int main() {
     SetConsoleOutputCP(1251);
 
-    const double p = 0.1;
-    const double a = 1e-10; // Нижняя граница (избегаем 0)
-    const double b = 1.0;   // Верхняя граница
-    const std::vector<size_t> n_values = { 4, 8, 16, 32, 64 };
+    using Data = std::map<std::string, Function>;
+    auto data = file::File<Data>::read(file::path::PathParams(
+        "./data", "input", "json"
+    ));
 
-    std::map<std::string, IntegrationMethod> methods = {
+    const Function& func = (*data).at("2");
+
+    IntegrationMethods methods = {
          {"Левые прямоугольники", left_rectangle},
          {"Правые прямоугольники", right_rectangle},
          {"Средние прямоугольники", middle_rectangle},
@@ -80,7 +75,7 @@ int main() {
     };
 
     for (const auto& [name, method] : methods) {
-        solve(name, method, p, n_values, a, b);
+        solve(name, method, func);
     }
 
 	return 0;

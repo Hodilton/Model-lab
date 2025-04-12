@@ -132,12 +132,16 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Function.h" />
     <ClInclude Include="methods\IIntegrationMethod.h" />
     <ClInclude Include="methods\LeftRectangleMethod.h" />
     <ClInclude Include="methods\MiddleRectangleMethod.h" />
     <ClInclude Include="methods\RightRectangleMethod.h" />
     <ClInclude Include="methods\SimpsonMethod.h" />
     <ClInclude Include="methods\TrapezoidMethod.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="data\input.json" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
