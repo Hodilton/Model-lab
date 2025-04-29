@@ -32,13 +32,13 @@ void solve(const std::string& method_name,
         << func.getRange().first 
         << ", " 
         << func.getRange().second << "]\n";
-    std::cout << "Точное значение (I_T): " << std::setprecision(67) << I_T << "\n";
+    std::cout << "Точное значение (I_T): " << std::setprecision(25) << I_T << "\n";
 
     std::cout << std::right
               << std::setw(8) << "n"
-              << std::setw(45) << "I_N"
-              << std::setw(40) << "E" << "\n";
-    std::cout << std::string(100, '-') << "\n";
+              << std::setw(25) << "I_N"
+              << std::setw(30) << "E" << "\n";
+    std::cout << std::string(73, '-') << "\n";
 
     for (size_t n : func.getNValues()) {
         try {
@@ -46,8 +46,8 @@ void solve(const std::string& method_name,
             double epsilon = std::abs(I_T - I_N) / I_T;
 
             std::cout << std::setw(8) << n << std::setw(15) << " " << std::left
-                      << std::setw(69) << std::setprecision(67) << I_N
-                      << std::setw(20) << std::setprecision(6) << epsilon 
+                      << std::setw(37) << std::setprecision(25) << I_N
+                      << std::setw(10) << std::setprecision(6) << epsilon 
                       << std::right << "\n";
         }
         catch (const std::exception& e) {
